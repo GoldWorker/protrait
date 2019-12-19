@@ -1,0 +1,109 @@
+{
+    "dev": {
+        "cdnUrl": "http://odyehxxr5.bkt.clouddn.com/iportal-dev/",
+        "ak": "xKzCfC_k6hj-7QN_wBwKiSigawkqutKmh280cH8-",
+        "sk": "wDiJw747BkWM_TuJtlr_1IQbf8RAeVYHsxr0rPGp",
+        "bk": "jtest",
+        "uploadPath": "iportal-dev/",
+        "htmlBasePath": "/",
+        "uploadIgnore": [
+            "3rdpartylicenses.txt",
+            "**/*.html",
+            "assets/**",
+            "server.js*"
+        ],
+        "ignorePaths": {
+            "assets": "20171117"
+        },
+        "env": "dev"
+    },
+    "stg": {
+        "cdnUrl": "https://portal-test.jiguang.cn/iportal-dev/",
+        "ak": "pNf8Uh3lsdBw4BGIUE1tgWT8dPKDDyzuOGEgtEJi",
+        "sk": "1IFNnCDTvWhPCr7gdE-nkODK5nV5_NdBJgXKSZ32",
+        "bk": "portal-test",
+        "uploadPath": "iportal-dev/",
+        "htmlBasePath": "/",
+        "uploadIgnore": [
+            "3rdpartylicenses.txt",
+            "**/*.html",
+            "assets/**",
+            "server.js*"
+        ],
+        "ignorePaths": {
+            "assets": "20171117"
+        },
+        "env": "stg"
+    },
+    "master": {
+        "cdnUrl": "https://o8ci6tgz8.qnssl.com/iportal-dev/",
+        "ak": "pNf8Uh3lsdBw4BGIUE1tgWT8dPKDDyzuOGEgtEJi",
+        "sk": "1IFNnCDTvWhPCr7gdE-nkODK5nV5_NdBJgXKSZ32",
+        "bk": "wwwpic",
+        "uploadPath": "iportal-dev/",
+        "htmlBasePath": "/",
+        "uploadIgnore": [
+            "3rdpartylicenses.txt",
+            "**/*.html",
+            "assets/**"
+        ],
+        "ignorePaths": {
+            "assets": "20171117"
+        },
+        "env": "master"
+    },
+    "qa": {
+        "cdnUrl": "https://portal-test.jiguang.cn/qa-iportal-dev/",
+        "ak": "pNf8Uh3lsdBw4BGIUE1tgWT8dPKDDyzuOGEgtEJi",
+        "sk": "1IFNnCDTvWhPCr7gdE-nkODK5nV5_NdBJgXKSZ32",
+        "bk": "portal-test",
+        "uploadPath": "qa-iportal-dev/",
+        "htmlBasePath": "/",
+        "uploadIgnore": [
+            "3rdpartylicenses.txt",
+            "**/*.html",
+            "assets/**",
+            "server.js*"
+        ],
+        "ignorePaths": {
+            "assets": "20171117"
+        },
+        "env": "qa"
+    },
+    "qa_auto": {
+        "cdnUrl": "https://portal-test.jiguang.cn/qa-iportal-dev/",
+        "ak": "pNf8Uh3lsdBw4BGIUE1tgWT8dPKDDyzuOGEgtEJi",
+        "sk": "1IFNnCDTvWhPCr7gdE-nkODK5nV5_NdBJgXKSZ32",
+        "bk": "portal-test",
+        "uploadPath": "bjqa-iportal-dev/",
+        "htmlBasePath": "/",
+        "uploadIgnore": [
+            "3rdpartylicenses.txt",
+            "**/*.html",
+            "assets/**",
+            "server.js*"
+        ],
+        "ignorePaths": {
+            "assets": "20171117"
+        },
+        "env": "qa_auto"
+    },
+    "common": {
+        "pages": [
+            "accounts",
+            "accounts/login/form",
+            "accounts/register",
+            "accounts/security",
+            "accounts/logout",
+            "accounts/register_verify",
+            "accounts/business_contact",
+            "accounts/business_contact_status",
+            "accounts/forget_password",
+            "accounts/reset_password",
+            "accounts/weekly_report",
+            "accounts/platform",
+            "accounts/profile",
+            "404"
+        ]
+    }
+}

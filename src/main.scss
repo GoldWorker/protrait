@@ -1,0 +1,50 @@
+$theme_color:#2195f3;
+
+$success_green:#47C464;
+$fail_red:#FE5D5D;
+$warn_yellow:#FF8F39;
+$common_blue: #2195f3;
+$disable:#898183;
+
+$disable_bg: #F7F8F9;
+$disable_c:#B3B9C1;
+$readOnly_c:#787E85;
+$readOnly_bg:#F7F8F9;
+//shadow
+$shadow_color: 0 1px 3px 0 #D4D8DB;
+//paper
+$paper_color: #fff;
+
+// Gobal
+$w_space: -5px;
+
+// input
+// $input_border_color: #F6F8F9;
+$input_outline_color: #5DA4FF;
+$input_radius: 2px;
+$input_fs: 12px;
+// $placeholder_b: #F6F8F9; //input 级别的提示
+$placeholder_fs: 12px;
+// $checkbox_default_bg:#F6F8F9;
+$checkbox_default_c: inherit;
+$checkbox_focus_bg: $theme_color;
+$checkbox_focus_c: inherit;
+// $select_hover_color:#fff;
+
+// btn
+$hoverWaveColor: $theme_color;
+$btn_radius: 3px;
+$btn_action_radius: 50px;
+$btn_fs: 12px;
+
+// table
+$table_odd_bg: #F6F8F9;
+$table_header_bg: #fff;
+$table_header_c: #787E85;
+$table_header_fs: 14px;
+$table_hover: #E8EBED;
+
+// $tab_top_color:#111111;
+$tab_active_color:$theme_color;
+
+@import "slucky/sass/normal.scss";
