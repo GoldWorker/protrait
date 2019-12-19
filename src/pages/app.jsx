@@ -67,7 +67,8 @@ export default class App extends Component {
             border: {
                 name: '圆角边框',
                 value: 'rect'
-            }
+            },
+            loading: false
         };
     }
 
@@ -101,6 +102,10 @@ export default class App extends Component {
             return false;
         }
 
+        this.setState({
+            loading: true
+        });
+
         const base64Url = await this.file2Base64(sourceImage);
         const imgObj = await this.createImage(base64Url);
 
@@ -122,7 +127,8 @@ export default class App extends Component {
         });
         this.handleMakeImage(imgUrl, decorationCurrent).then(targetUrl => {
             this.setState({
-                targetUrl
+                targetUrl,
+                loading: false
             });
         });
     }
@@ -130,25 +136,42 @@ export default class App extends Component {
     handleChangeDecorate(item) {
         const { imgUrl } = this.state;
         this.setState({
-            decorationCurrent: item
+            decorationCurrent: item,
+            loading: true
         });
         this.handleMakeImage(imgUrl, item).then(targetUrl => {
             this.setState({
-                targetUrl
+                targetUrl,
+                loading: false
+            });
+        });
+    }
+
+    handleChangeBorder(border) {
+        const { imgUrl, decorationCurrent } = this.state;
+        this.setState({
+            border,
+            loading: true
+        }, () => {
+            this.handleMakeImage(imgUrl, decorationCurrent).then(targetUrl => {
+                this.setState({
+                    targetUrl,
+                    loading: false
+                });
             });
         });
     }
 
     async handleMakeImage(imgUrl, decorationCurrent) {
-        if (!(imgUrl || decorationCurrent)) { return false; }
+        if (!(imgUrl || decorationCurrent)) { return ''; }
 
         const { border } = this.state;
         const { value } = border;
         const { source, style } = decorationCurrent;
         const { width, height, top, left } = style;
         const { canvas } = this.refs;
-        this.clearCanvas(canvas);
 
+        this.clearCanvas(canvas);
         const context = canvas.getContext('2d');
 
         if (imgUrl) {
@@ -158,7 +181,7 @@ export default class App extends Component {
 
         this.drawBorder(value, context);
 
-        if (decorationCurrent) {
+        if (decorationCurrent && source) {
             const imgObj = await this.createImage(source);
             context.drawImage(imgObj, left, top, width, height);
         }
@@ -256,22 +279,9 @@ export default class App extends Component {
         return res;
     }
 
-    handleChangeBorder(border) {
-        const { imgUrl, decorationCurrent } = this.state;
-        this.setState({
-            border
-        }, () => {
-            this.handleMakeImage(imgUrl, decorationCurrent).then(targetUrl => {
-                this.setState({
-                    targetUrl
-                });
-            });
-        });
-    }
-
     render() {
         const { decorationList, targetUrl } = this.state;
-        const { source, style } = this.state.decorationCurrent;
+        // const { source, style } = this.state.decorationCurrent;
         return (
             <div className="d-f fullscreen ac app-bg">
                 {/* <img src={require('../images/bg4.png')} alt="" className="p-a z0" style={{ height: '100%', left: 0, bottom: 0, right: 0, top: 0, margin: 'auto' }} /> */}
@@ -281,8 +291,7 @@ export default class App extends Component {
                         option={decorationList}
                         onChange={(item) => this.handleChangeDecorate(item)}>
                         {
-                            <div className="w256 h256 shadow p-r"
-                            >
+                            <div className="w256 h256 shadow p-r" loader-inline={this.state.loading ? 'circle' : ''}>
                                 {/* <img
                                     src={source}
                                     alt=""
@@ -321,7 +330,6 @@ export default class App extends Component {
                     </div>
                     <div className="c-hint-b ta-c pt16">移动端长按图片即可保存</div>
                     <canvas className="w256 h256 shadow d-n" ref="canvas" />
-                    {/* <img src={targetUrl} alt="" /> */}
                 </div>
             </div>
         );
