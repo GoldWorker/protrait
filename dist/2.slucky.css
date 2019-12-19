@@ -1151,7 +1151,7 @@ th {
     transition: all .3s;
     content: '';
     position: absolute;
-    bottom: 2px;
+    bottom: 4px;
     right: 0;
     margin: 0 8px 0 8px;
     border-width: 4px;
@@ -1162,7 +1162,7 @@ th {
     transition: all .3s;
     content: '';
     position: absolute;
-    bottom: 2px;
+    bottom: 4px;
     right: 0;
     margin: 0 10px 0 10px;
     border-width: 2px;
@@ -1176,7 +1176,7 @@ th {
   .input-number .ctrl-down:after {
     content: '';
     position: absolute;
-    top: 2px;
+    top: 0px;
     margin: 0 8px 0 8px;
     right: 0;
     border-width: 4px;
@@ -1187,7 +1187,7 @@ th {
   .input-number .ctrl-down:before {
     content: '';
     position: absolute;
-    top: 2px;
+    top: 0px;
     margin: 0 10px 0 10px;
     right: 0;
     border-width: 2px;

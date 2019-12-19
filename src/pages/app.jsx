@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Toast } from 'slucky';
-import LrChange from './lrChange';
+import { Toast, Lrchange} from 'slucky';
 import './app.scss';
 
 const CANVANS_SIZE = 256;
@@ -287,7 +286,7 @@ export default class App extends Component {
                 {/* <img src={require('../images/bg4.png')} alt="" className="p-a z0" style={{ height: '100%', left: 0, bottom: 0, right: 0, top: 0, margin: 'auto' }} /> */}
                 <div className="w-full p-r z9">
                     <div className="fs18 ta-c pb32">制作你的专属头像</div>
-                    <LrChange
+                    <Lrchange
                         option={decorationList}
                         onChange={(item) => this.handleChangeDecorate(item)}>
                         {
@@ -302,8 +301,8 @@ export default class App extends Component {
                                 <img src={targetUrl} alt="" />
                             </div>
                         }
-                    </LrChange>
-                    <LrChange
+                    </Lrchange>
+                    <Lrchange
                         option={[{
                             name: '圆角边框',
                             value: 'rect'
@@ -318,7 +317,7 @@ export default class App extends Component {
                         {
                             <div className="w256 ta-c pt32 pb8 fs18">{this.state.border.name}</div>
                         }
-                    </LrChange>
+                    </Lrchange>
                     <div className="ta-c pt32">
                         <div className="fileup-container mr8">
                             <div className="fileup">

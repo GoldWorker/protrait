@@ -1,23 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter, BrowserRouter, Switch } from 'react-router-dom';
-import { Provider } from 'react-redux'
-import { getStore } from './store.js'
-import "../node_modules/highlight.js/styles/tomorrow.css";
-import Global from "./pages/global";
-import RenderRouter from './router'
-import "./main.scss";
-// import './less/theme.less'
-
+import { Provider } from 'react-redux';
+import { getStore } from './store.js';
+import Global from './pages/global';
+import RenderRouter from './router';
+import './main.scss';
 
 const requireAll = requireContext => requireContext
     .keys()
-    .map(requireContext)
-const req = require.context('./icons', false, /\.svg$/)
-requireAll(req)
+    .map(requireContext);
+const req = require.context('./icons', false, /\.svg$/);
+requireAll(req);
 
-import __API__ from './config.js'
-window.__API__ = __API__
+import __API__ from './config.js';
+window.__API__ = __API__;
 
 // if (module.hot) {
 //     module
@@ -25,7 +22,7 @@ window.__API__ = __API__
 //         .accept()
 // }
 
-const store = getStore()
+const store = getStore();
 ReactDOM.render(
     <Provider store={store}>
         <HashRouter>
@@ -36,4 +33,4 @@ ReactDOM.render(
                 </Switch>
             </div>
         </HashRouter>
-    </Provider>, document.getElementById('root'))
+    </Provider>, document.getElementById('root'));
