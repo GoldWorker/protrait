@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Toast, Lrchange} from 'slucky';
+import { Toast, Lrchange } from 'slucky';
 import './app.scss';
 
 const CANVANS_SIZE = 256;
@@ -14,6 +14,14 @@ export default class App extends Component {
                 height: 128,
                 top: `${CANVANS_SIZE - 128}`,
                 left: `${CANVANS_SIZE - 128}`
+            }
+        }, {
+            source: require('../images/d12.png'),
+            style: {
+                width: 128,
+                height: 128,
+                top: `${CANVANS_SIZE - 138}`,
+                left: `${CANVANS_SIZE - 118}`
             }
         }, {
             source: require('../images/decoration1.png'),
@@ -95,19 +103,16 @@ export default class App extends Component {
         if (!sourceImage) {
             return false;
         }
-
         if (!/image/ig.test(sourceImage.type)) {
             Toast.warn('仅支持上传图片');
             return false;
         }
-
         this.setState({
             loading: true
         });
 
         const base64Url = await this.file2Base64(sourceImage);
         const imgObj = await this.createImage(base64Url);
-
         // 调整用户图片尺寸
         const type = imgObj.width - imgObj.height;
         if (type > 0) {
@@ -161,15 +166,19 @@ export default class App extends Component {
         });
     }
 
+    /**
+     * @param {string} imgUrl (进过处理的用户图片url)
+     * @param {object} decorationCurrent (饰品对象)
+     * @returns imageUrl
+     * @memberof App
+     */
     async handleMakeImage(imgUrl, decorationCurrent) {
         if (!(imgUrl || decorationCurrent)) { return ''; }
-
         const { border } = this.state;
         const { value } = border;
         const { source, style } = decorationCurrent;
         const { width, height, top, left } = style;
         const { canvas } = this.refs;
-
         this.clearCanvas(canvas);
         const context = canvas.getContext('2d');
 
@@ -177,9 +186,7 @@ export default class App extends Component {
             const bgImg = await this.createImage(imgUrl);
             context.drawImage(bgImg, 0, 0, bgImg.width, bgImg.height);
         }
-
         this.drawBorder(value, context);
-
         if (decorationCurrent && source) {
             const imgObj = await this.createImage(source);
             context.drawImage(imgObj, left, top, width, height);
@@ -189,6 +196,12 @@ export default class App extends Component {
         return targetUrl;
     }
 
+
+    /**
+     * @param {*} type 边框类型
+     * @param {*} context canvas上下文
+     * @memberof App
+     */
     drawBorder(type, context) {
         let rect = {};
         switch (type) {
@@ -211,7 +224,6 @@ export default class App extends Component {
     drawUsingArc(rect, r, ctx, w = 20) {
         //https://blog.csdn.net/sarkuya/article/details/49793531
         const path = new Path2D();
-
         path.moveTo(rect.x + r, rect.y);
         path.lineTo(rect.x + rect.width - r, rect.y);
         path.arc(rect.x + rect.width - r, rect.y + r, r, Math.PI / 180 * 270, 0, false);
@@ -267,23 +279,10 @@ export default class App extends Component {
         }
     }
 
-    num2px(obj) {
-        const res = {};
-        for (const k in obj) {
-            if (obj.hasOwnProperty(k)) {
-                const elem = obj[k];
-                res[k] = elem + 'px';
-            }
-        }
-        return res;
-    }
-
     render() {
-        const { decorationList, targetUrl } = this.state;
-        // const { source, style } = this.state.decorationCurrent;
+        const { decorationList, targetUrl, imgUrl } = this.state;
         return (
             <div className="d-f fullscreen ac app-bg">
-                {/* <img src={require('../images/bg4.png')} alt="" className="p-a z0" style={{ height: '100%', left: 0, bottom: 0, right: 0, top: 0, margin: 'auto' }} /> */}
                 <div className="w-full p-r z9">
                     <div className="fs18 ta-c pb32">制作你的专属头像</div>
                     <Lrchange
@@ -291,14 +290,8 @@ export default class App extends Component {
                         onChange={(item) => this.handleChangeDecorate(item)}>
                         {
                             <div className="w256 h256 shadow p-r" loader-inline={this.state.loading ? 'circle' : ''}>
-                                {/* <img
-                                    src={source}
-                                    alt=""
-                                    className="p-a z1"
-                                    style={this.num2px(style)}
-                                />
-                                <img src={this.state.imgUrl} alt="" className="p-a l0 t0" /> */}
                                 <img src={targetUrl} alt="" />
+                                {/* <img src={imgUrl} alt="" /> */}
                             </div>
                         }
                     </Lrchange>
