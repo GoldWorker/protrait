@@ -27,7 +27,7 @@
         "react-transition-group": "^1.2.1",
         "redux": "^4.0.0",
         "redux-thunk": "^2.2.0",
-        "slucky": "^0.3.42",
+        "slucky": "^0.4.3",
         "webpack-merge": "^4.2.1"
     },
     "devDependencies": {

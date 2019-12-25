@@ -17,7 +17,7 @@
         ["import",
             {
                 "libraryName": "slucky",
-                "libraryDirectory": "component",
+                "libraryDirectory": "lib/component",
             },
             {
                 "libraryName": "antd",
